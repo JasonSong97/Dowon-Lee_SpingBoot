@@ -1,0 +1,38 @@
+server:
+  port: 8088
+
+logging:
+  level:
+    org.springframework: debug
+
+spring:
+  message:
+    basename: messages
+  # JPA
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    defer-datasource-initialization: true # 하이버네이트 초기화를 스크립트보다 먼저 진행
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+
+
+  # 시큐리티 -> Basic token, 포스트맨
+#  security:
+#    user:
+#      name: username
+#      password: 1234
+
+# 엑츄에이터
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
